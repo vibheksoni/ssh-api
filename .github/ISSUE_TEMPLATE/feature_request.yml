@@ -1,0 +1,24 @@
+name: Feature request
+description: Suggest an improvement for SSH ~ Api
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What user or agent problem does this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: Describe the feature or workflow you want
+    validations:
+      required: true
+  - type: textarea
+    id: agent_angle
+    attributes:
+      label: Agent angle
+      description: How would an AI agent use this capability?

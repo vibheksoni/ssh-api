@@ -1,0 +1,42 @@
+{
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8754,
+    "debug": false
+  },
+  "ssh": {
+    "default_port": 22,
+    "timeout": 30,
+    "banner_timeout": 15,
+    "auth_timeout": 30,
+    "keepalive_interval": 60,
+    "max_concurrent_connections": 10
+  },
+  "auth": {
+    "default_host": "",
+    "default_username": "",
+    "default_password": "",
+    "default_key_path": "",
+    "default_key_passphrase": ""
+  },
+  "sftp": {
+    "chunk_size": 32768,
+    "max_file_size_mb": 500,
+    "temp_directory": "/tmp"
+  },
+  "security": {
+    "disabled_algorithms": {
+      "ciphers": [
+        "3des-cbc"
+      ],
+      "macs": [
+        "hmac-md5"
+      ]
+    },
+    "reject_unknown_hosts": false
+  },
+  "logging": {
+    "level": "INFO",
+    "directory": "ssh-service-logs"
+  }
+}

@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ssh-api"
+version = "0.1.0"
+description = "OpenAPI-first SSH control plane for AI agents and Linux VPS automation."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [
+  { name = "Vibhek Soni" }
+]
+keywords = [
+  "ssh",
+  "fastapi",
+  "openapi",
+  "ai-agents",
+  "vps",
+  "linux-automation",
+  "sftp",
+  "server-automation"
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Framework :: FastAPI",
+  "Intended Audience :: Developers",
+  "Intended Audience :: System Administrators",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Internet",
+  "Topic :: System :: Systems Administration",
+  "Topic :: Software Development :: Libraries :: Python Modules"
+]
+dependencies = [
+  "paramiko>=4.0.0",
+  "fastapi>=0.136.0",
+  "uvicorn>=0.45.0",
+  "pydantic>=2.13.3",
+  "pynacl>=1.6.2",
+  "bcrypt>=5.0.0"
+]
+
+[project.urls]
+Homepage = "https://freetheai.xyz/"
+Discord = "https://discord.gg/secrets"
+Repository = "https://github.com/vibheksoni/ssh-api"
+Issues = "https://github.com/vibheksoni/ssh-api/issues"
+
+[project.scripts]
+ssh-api = "run:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["src*"]

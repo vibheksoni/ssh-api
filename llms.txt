@@ -1,0 +1,30 @@
+# SSH ~ Api
+
+> OpenAPI-first SSH control plane for AI agents and Linux VPS automation.
+
+SSH ~ Api gives agents a structured HTTP layer for SSH sessions, file transfer, shell commands, provisioning, tunnels, and common Linux administration tasks.
+
+Agents should fetch `/openapi.json`, read the guide, create a session with `POST /session/connect`, store the returned `session_id`, and prefer the documented endpoints over raw SSH improvisation.
+
+## Core Docs
+
+- [README.md](README.md): public overview, positioning, and fast setup
+- [SSH_API_GUIDE.md](SSH_API_GUIDE.md): full route and workflow guide
+- [config.example.json](config.example.json): safe public config template
+- [run.py](run.py): API server entrypoint
+
+## Agent Handoff
+
+- [AGENT_SETUP_PROMPT.md](AGENT_SETUP_PROMPT.md): copy-paste setup prompt for asking an agent to install and start the API
+- [AGENT_PROMPTS.md](AGENT_PROMPTS.md): reusable prompts for server automation workflows
+- [AGENTS.md](AGENTS.md): repository-level instructions for coding agents working inside this repo
+- [skills/ssh-api-setup/SKILL.md](skills/ssh-api-setup/SKILL.md): reusable skill-style setup and usage instructions
+
+## Setup Helpers
+
+- [scripts/bootstrap.ps1](scripts/bootstrap.ps1): Windows bootstrap script
+- [scripts/bootstrap.sh](scripts/bootstrap.sh): POSIX bootstrap script
+
+## Expanded Context
+
+- [llms-full.txt](llms-full.txt): expanded agent-readable summary of setup, workflow, docs, and common tasks

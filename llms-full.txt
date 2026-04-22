@@ -1,0 +1,135 @@
+# SSH ~ Api
+
+> OpenAPI-first SSH control plane for AI agents and Linux VPS automation.
+
+## Summary
+
+SSH ~ Api is a FastAPI service that gives AI agents a structured HTTP layer for remote Linux operations.
+
+Instead of making an agent improvise over raw SSH, this project exposes predictable routes for:
+
+- session management
+- command execution
+- interactive shell output
+- file transfer over SFTP
+- system inspection and administration
+- distro-aware package installation
+- SSH tunnels
+- firewall operations
+
+## Why It Exists
+
+Most agents can use HTTP and OpenAPI much more reliably than they can use ad hoc terminal workflows.
+
+This project turns remote Linux administration into an API problem that agents can handle consistently.
+
+## Fast Setup
+
+Windows:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\bootstrap.ps1
+```
+
+macOS / Linux:
+
+```bash
+./scripts/bootstrap.sh
+```
+
+Manual:
+
+```bash
+pip install -r requirements.txt
+cp config.example.json config.json
+python run.py
+```
+
+Main docs endpoints after startup:
+
+- `/docs`
+- `/redoc`
+- `/openapi.json`
+
+## Agent Workflow
+
+The intended workflow for an agent is:
+
+1. Fetch `/openapi.json`.
+2. Read `SSH_API_GUIDE.md`.
+3. Create a session with `POST /session/connect`.
+4. Store the returned `session_id`.
+5. Use the structured endpoint groups for commands, files, system ops, setup, tunnels, and firewall.
+6. Disconnect with `POST /session/disconnect/{session_id}` when done.
+
+## Endpoint Groups
+
+- `session`: connect, disconnect, status, list
+- `command`: exec, shell, read output, send keys, background tasks
+- `file`: upload, download, list, read, write, mkdir, stat, copy, remove
+- `system`: platform, processes, services, disk, memory, cpu, network, grep, find, archive, extract, env, cron, users, chmod, chown, uptime, rmrf
+- `setup`: detect package manager and install packages
+- `tunnel`: local and remote SSH forwards
+- `firewall`: detect backend, inspect rules, apply rules, save, restore
+- `config`: read and update local service configuration
+
+## Linux Compatibility
+
+The project began as Debian and Ubuntu-oriented but now detects the remote platform and adapts where possible for:
+
+- Debian and Ubuntu
+- RHEL, CentOS, Rocky, AlmaLinux, Fedora
+- SUSE and openSUSE
+- Alpine
+- Arch-based systems
+
+Package-management and service/firewall behavior are best-effort where the required tools exist on the target host.
+
+## Security Notes
+
+- this API has no built-in HTTP authentication
+- keep it behind a reverse proxy, VPN, or private network boundary
+- do not commit `config.json`
+- `/config` can expose or modify local default SSH credentials
+- use least-privilege SSH accounts whenever possible
+
+## Important Files
+
+- `README.md`: public overview
+- `SSH_API_GUIDE.md`: full usage guide
+- `AGENT_SETUP_PROMPT.md`: copy-paste setup prompt
+- `AGENT_PROMPTS.md`: reusable operation prompts
+- `AGENTS.md`: repo-level coding agent context
+- `config.example.json`: safe public config template
+- `scripts/bootstrap.ps1`: Windows bootstrap
+- `scripts/bootstrap.sh`: POSIX bootstrap
+
+## Copy-Paste Agent Setup Prompt
+
+```text
+Set up SSH ~ Api in this repository.
+
+Goals:
+- create a local virtual environment
+- install dependencies
+- create config.json from config.example.json if it does not exist
+- start the API locally
+- report the base URL, /docs URL, /redoc URL, and /openapi.json URL
+
+Rules:
+- do not commit config.json
+- do not place real credentials into tracked files
+- if the API is already running, verify it instead of starting a duplicate copy
+- after startup, fetch /openapi.json and read SSH_API_GUIDE.md so you understand the API surface
+```
+
+## Recommended Follow-Up Prompt
+
+```text
+Use SSH ~ Api as your interface to the target Linux machine.
+First fetch http://HOST:PORT/openapi.json.
+Then read SSH_API_GUIDE.md before taking actions.
+Create a session with POST /session/connect, store the returned session_id, and reuse it on later requests.
+Prefer the documented command, file, system, setup, tunnel, and firewall endpoints over inventing raw SSH behavior.
+Disconnect the session when the task is complete.
+```

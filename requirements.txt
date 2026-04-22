@@ -1,0 +1,6 @@
+paramiko>=4.0.0
+fastapi>=0.136.0
+uvicorn>=0.45.0
+pydantic>=2.13.3
+pynacl>=1.6.2
+bcrypt>=5.0.0

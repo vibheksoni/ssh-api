@@ -1,0 +1,9 @@
+services:
+  ssh-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ssh-api
+    ports:
+      - "8754:8754"
+    restart: unless-stopped
