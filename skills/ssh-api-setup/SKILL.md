@@ -5,6 +5,10 @@ description: Use this skill when you need to install, configure, start, verify, 
 
 # SSH ~ Api Setup Skill
 
+Repository:
+
+- `https://github.com/vibheksoni/ssh-api`
+
 ## When To Use
 
 Use this skill when:
@@ -46,11 +50,25 @@ pip install -r requirements.txt
 python run.py
 ```
 
+## Install This Skill
+
+Public GitHub install via `npx skills`:
+
+```bash
+npx skills add vibheksoni/ssh-api --skill ssh-api-setup
+```
+
+List available skills in this repo first:
+
+```bash
+npx skills add vibheksoni/ssh-api --list
+```
+
 ## Rules
 
 - Never commit `config.json`.
 - Never place real credentials in tracked files.
-- Prefer the API’s structured routes over inventing raw SSH workflows.
+- Prefer the API's structured routes over inventing raw SSH workflows.
 - If the API is already running, verify it instead of starting a duplicate instance.
 
 ## Validation
