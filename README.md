@@ -5,6 +5,10 @@
 <p align="center">Give any agent a structured HTTP layer for commands, file transfer, provisioning, tunnels, and server administration instead of brittle raw terminal SSH.</p>
 
 <p align="center">
+  <a href="https://deepwiki.com/vibheksoni/ssh-api"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"></a>
+</p>
+
+<p align="center">
   <a href="https://discord.gg/secrets"><strong>Join the Discord server</strong></a> to get updates, ask questions, and get a free API key for Free AI.
 </p>
 
