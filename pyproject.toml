@@ -47,7 +47,7 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://freetheai.xyz/"
+Homepage = "https://freetheai.org/"
 Discord = "https://discord.gg/secrets"
 Repository = "https://github.com/vibheksoni/ssh-api"
 Issues = "https://github.com/vibheksoni/ssh-api/issues"
